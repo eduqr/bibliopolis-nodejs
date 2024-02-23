@@ -5,7 +5,7 @@ const {getStudents, createStudent, updateStudent, deleteStudent} = require("../c
 
 app.route("/estudiantes").get(getStudents);
 app.route("/estudiantes").post(createStudent);
-app.route("/estudiantes").put(updateStudent);
-app.route("/estudiantes").delete(deleteStudent);
+app.route("/estudiantes/:id").patch(updateStudent);
+app.route("/estudiantes/:id").delete(deleteStudent);
 
 module.exports = app;
