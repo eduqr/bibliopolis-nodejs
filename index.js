@@ -1,11 +1,14 @@
 const express = require("express");
-const app     = express();
+var cors = require('cors')
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+app.use(cors());
 // Cargar archivo de rutas
 app.use(require('./routes/loans'));
+
+app.use(require('./routes/librarians'));
 
 const PORT = process.env.PORT;
 
