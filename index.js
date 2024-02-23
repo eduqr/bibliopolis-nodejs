@@ -6,7 +6,7 @@ app.use(express.urlencoded({extended: true}));
 
 // Cargar archivo de rutas
 app.use(require('./routes/loans'));
-
+app.use(require('./routes/students.routes.js'));
 const PORT = process.env.PORT;
 
 app.listen(PORT,() => {
