@@ -9,6 +9,7 @@ app.use(cors());
 // Cargar archivo de rutas
 app.use(require('./routes/loans'));
 app.use(require('./routes/careers'));
+app.use(require('./routes/roles'));
 app.use(require('./routes/students.routes.js'));
 app.use(require('./routes/librarians'));
 

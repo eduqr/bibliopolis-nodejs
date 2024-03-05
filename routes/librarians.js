@@ -15,6 +15,8 @@ const getLibrarian = (request, response) => {
 };
 Router.get("/Bibliotecarios", getLibrarian);
 
+
+
 const postLibrarian = (request, response) => {
     const { name, lastname, email, rol_id } = request.body;
     connection.query("INSERT INTO librarians (name, lastname, email, rol_id) VALUES (?,?,?,?)",
