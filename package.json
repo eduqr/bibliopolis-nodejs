@@ -2,10 +2,11 @@
   "name": "bibliopolis",
   "version": "1.0.0",
   "description": "Proyecto Cliente Servidor",
-  "main": "index.js",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
-    "server": "npx nodemon index.js",
+    "server": "npx nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "team one",
