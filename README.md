@@ -29,6 +29,7 @@ CREATE TABLE `books` (
   `author` varchar(200) NOT NULL,
   `isbn` varchar(200) NOT NULL,
   `units` int NOT NULL,
+  `image_name` VARCHAR(200) NOT NULL;
   `editorial_id` int NOT NULL
 );
 
