@@ -6,7 +6,7 @@ CREATE TABLE `students` (
   `id` varchar(10) PRIMARY KEY,
   `name` varchar(40) NOT NULL,
   `lastname` varchar(40) NOT NULL,
-  `email` varchar(40) UNIQUE NOT NULL,
+  `email` varchar(80) UNIQUE NOT NULL,
   `career_id` int NOT NULL
 );
 
@@ -14,12 +14,12 @@ CREATE TABLE `librarians` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `lastname` varchar(40) NOT NULL,
-  `email` varchar(40) UNIQUE NOT NULL,
+  `email` varchar(80) UNIQUE NOT NULL,
   `rol_id` int NOT NULL
 );
 
 CREATE TABLE `roles` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE `books` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `author` varchar(200) NOT NULL,
-  `isbn` varchar(200) NOT NULL,
+  `isbn` varchar(15) NOT NULL,
   `units` int NOT NULL,
   `image_name` varchar(200) NOT NULL;
   `editorial_id` int NOT NULL
