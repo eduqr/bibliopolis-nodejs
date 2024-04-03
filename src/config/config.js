@@ -1,18 +1,25 @@
 import dotenv from "dotenv";
+import mysql from "mysql2/promise";
+
 dotenv.config();
 
-import mysql from "mysql2";
 let connection;
-
 try {
-  connection = mysql.createConnection({
+  connection = await mysql.createConnection({
     host: process.env.DBHOST,
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: process.env.DBNAME,
   });
+
+  console.log("Conexión exitosa a la base de datos");
 } catch (error) {
-  console.log("Error al conectar con la base de datos");
+  console.error(
+    "Error al conectar con la base de datos:",
+    process.env.DBNAME,
+    "Error:",
+    error.message
+  );
 }
 
 export { connection };

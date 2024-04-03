@@ -1,85 +1,71 @@
-import dotenv from "dotenv";
 import { connection } from "../config/config.js";
 
-dotenv.config();
-
-const getStudents = (request, response) => {
-  connection.query("SELECT * FROM students", (error, results) => {
-    if (error) {
-      response.status(500).json({ error: "Error al obtener estudiantes" });
-    } else {
-      response.status(200).json(results);
-    }
-  });
+const getStudents = async (request, response) => {
+  try {
+    const [rows] = await connection.query("CALL spGetStudents");
+    const data = rows[0];
+    response.status(200).json(data);
+  } catch (error) {
+    response.status(500).json({ error: "Error al obtener estudiantes" });
+  }
 };
 
-const createStudent = (request, response) => {
-  const { id, name, lastname, email, career_id } = request.body;
-  connection.query(
-    "INSERT INTO students (id, name, lastname, email, career_id) VALUES (?,?,?,?,?)",
-    [id, name, lastname, email, career_id],
-    (error, results) => {
-      if (error) {
-        response.status(500).json({ error: "Error al crear el estudiante" });
-      } else {
-        response.status(201).json({
-          "Estudiante creado con éxito": results.affectedRows,
-        });
-      }
-    }
-  );
+const getStudentById = async (request, response) => {
+  try {
+    const { id } = request.params;
+    const [rows] = await connection.query("CALL spGetStudentById(?)", [id]);
+    const data = rows[0][0];
+    response.status(200).json(data);
+  } catch (error) {
+    response.status(500).json({ error: "Error al obtener el estudiante" });
+  }
 };
 
-const updateStudent = (request, response) => {
-  const { id } = request.params;
-  const { name, lastname, email, career_id } = request.body;
-  connection.query(
-    "UPDATE students SET name = IFNULL(?, name), lastname = IFNULL(?, lastname), email = IFNULL(?, email), career_id = IFNULL(?, career_id) WHERE id = ?",
-    [name, lastname, email, career_id, id],
-    (error, results) => {
-      if (error) {
-        response
-          .status(500)
-          .json({ error: "Error al actualizar el estudiante" });
-      } else {
-        response
-          .status(200)
-          .json({ "Estudiante actualizado con éxito": results.affectedRows });
-      }
-    }
-  );
+const createStudent = async (request, response) => {
+  try {
+    const { id, name, lastname, email, career_id } = request.body;
+    const [rows] = await connection.query("CALL spCreateStudent(?,?,?,?,?)", [
+      id,
+      name,
+      lastname,
+      email,
+      career_id,
+    ]);
+    response.status(201).json({
+      "Estudiante creado con éxito": rows.affectedRows,
+    });
+  } catch (error) {
+    response.status(500).json({ error: "Error al crear el estudiante" });
+  }
 };
 
-const deleteStudent = (request, response) => {
-  const id = request.params.id;
-  connection.query(
-    "DELETE FROM students WHERE id = ?",
-    [id],
-    (error, results) => {
-      if (error) {
-        response.status(500).json({ error: "Error al eliminar el estudiante" });
-      } else {
-        response.status(200).json({
-          "Estudiante eliminado con éxito": results.affectedRows,
-        });
-      }
-    }
-  );
+const updateStudent = async (request, response) => {
+  try {
+    const { id } = request.params;
+    const { name, lastname, email, career_id } = request.body;
+    const [rows] = await connection.query("CALL spUpdateStudent(?,?,?,?,?)", [
+      id,
+      name,
+      lastname,
+      email,
+      career_id,
+    ]);
+    response
+      .status(201)
+      .json({ "Estudiante actualizado con éxito": rows.affectedRows });
+  } catch (error) {
+    response.status(500).json({ error: "Error al actualizar el estudiante" });
+  }
 };
 
-const getStudentById = (request, response) => {
-  const id = request.params.id;
-  connection.query(
-    "SELECT * FROM students WHERE id = ?",
-    [id],
-    (error, results) => {
-      if (error) {
-        response.status(500).json({ error: "Error al obtener el estudiante" });
-      } else {
-        response.status(200).json(results);
-      }
-    }
-  );
+const deleteStudent = async (request, response) => {
+  try {
+    const { id } = request.params;
+    const [rows] = await connection.query("CALL spDeleteStudent(?)", [id]);
+    response.sendStatus(204);
+  } catch (error) {
+    response.status(500).json({ error: "Error al eliminar el estudiante" });
+  }
 };
 
 export {

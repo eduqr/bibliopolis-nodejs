@@ -1,6 +1,7 @@
 # bibliopolis-nodejs
 
 ### Script para las tablas (bibliopolisdb)
+
 ```sql
 CREATE TABLE `students` (
   `id` varchar(10) PRIMARY KEY,
@@ -190,4 +191,77 @@ INSERT INTO `loans` (`start_date`, `end_date`, `status`, `student_id`, `book_id`
 ('2024-03-24', '2024-03-30', 'active', '202400005', 9),
 ('2024-03-27', '2024-04-11', 'pending', '202400006', 10),
 ('2024-03-27', '2024-04-11', 'pending', '202400007', 12);
+
+-- PROCEDIMIENTOS ALMACENADOS
+
+-- STUDENTS
+
+-- 1
+DELIMITER $$
+CREATE PROCEDURE spGetStudents()
+BEGIN
+  SELECT *
+  FROM students;
+END$$
+DELIMITER ;
+
+-- 2
+DELIMITER $$
+CREATE PROCEDURE spGetStudentById(
+  IN studentId VARCHAR(10)
+)
+BEGIN
+  SELECT *
+  FROM students
+  WHERE id = studentId;
+END$$
+DELIMITER ;
+
+-- 3
+DELIMITER $$
+CREATE PROCEDURE spCreateStudent(
+	IN studentId VARCHAR(10),
+  IN studentName VARCHAR(40),
+  IN studentLastname VARCHAR(40),
+  IN studentEmail VARCHAR(80),
+  IN studentCareerId INT
+)
+BEGIN
+  INSERT INTO
+  students (id, name, lastname, email, career_id)
+  VALUES (studentId, studentName, studentLastname, studentEmail, studentCareerId);
+END$$
+DELIMITER ;
+
+-- 4
+DELIMITER $$
+CREATE PROCEDURE spUpdateStudent(
+	IN studentId VARCHAR(10),
+	IN studentName VARCHAR(40),
+	IN studentLastname VARCHAR(40),
+	IN studentEmail VARCHAR(80),
+	IN studentCareerId INT
+)
+BEGIN
+	UPDATE students
+	SET
+	name = IF(studentName IS NOT NULL, studentName, name),
+	lastname = IF(studentLastname IS NOT NULL, studentLastname, lastname),
+	email = IF(studentEmail IS NOT NULL, studentEmail, email),
+	career_id = IF(studentCareerId IS NOT NULL, studentCareerId, career_id)
+	WHERE id = studentId;
+END$$
+DELIMITER ;
+
+-- 5
+DELIMITER $$
+CREATE PROCEDURE spDeleteStudent(
+	IN studentId VARCHAR(10)
+)
+BEGIN
+	DELETE
+  FROM students
+	WHERE id = studentId;
+END$$
+DELIMITER ;
 ```
