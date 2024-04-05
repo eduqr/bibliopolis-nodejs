@@ -67,7 +67,7 @@ const deleteRole = async (request, response) => {
 };
 
 export { 
-  getRoles,
+  getRoles, 
   getRolesById,
   createRole,
   updateRole,
