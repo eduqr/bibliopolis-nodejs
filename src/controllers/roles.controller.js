@@ -1,8 +1,4 @@
-import dotenv from "dotenv";
 import { connection } from "../config/config.js";
-
-dotenv.config();
-
 
 const getRoles = async (request, response) => {
   try {
