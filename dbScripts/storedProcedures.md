@@ -451,4 +451,5 @@ BEGIN
   WHERE id = bookId;
 END$$
 DELIMITER ;
+
 ```
