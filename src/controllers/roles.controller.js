@@ -10,7 +10,6 @@ const getRoles = async (request, response) => {
   }
 };
 
-
 const getRolesById = async (request, response) => {
   try {
     const { id } = request.params;
@@ -25,10 +24,7 @@ const getRolesById = async (request, response) => {
 const createRole = async (request, response) => {
   try {
     const { id, name } = request.body;
-    const [rows] = await connection.query("CALL spCreateRole(?,?)", [
-      id,
-      name,
-    ]);
+    const [rows] = await connection.query("CALL spCreateRole(?,?)", [id, name]);
     response.status(201).json({
       "Rol creado con éxito": rows.affectedRows,
     });
@@ -41,10 +37,7 @@ const updateRole = async (request, response) => {
   try {
     const { id } = request.params;
     const { name } = request.body;
-    const [rows] = await connection.query("CALL spUpdateRole(?,?)", [
-      id,
-      name,
-    ]);
+    const [rows] = await connection.query("CALL spUpdateRole(?,?)", [id, name]);
     response
       .status(201)
       .json({ "Rol actualizado con éxito": rows.affectedRows });
@@ -63,11 +56,4 @@ const deleteRole = async (request, response) => {
   }
 };
 
-export { 
-  getRoles, 
-  getRolesById,
-  createRole,
-  updateRole,
-  deleteRole
-};
-
+export { getRoles, getRolesById, createRole, updateRole, deleteRole };

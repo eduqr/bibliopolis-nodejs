@@ -10,7 +10,6 @@ const getLibrarians = async (request, response) => {
   }
 };
 
-
 const getLibrarianById = async (request, response) => {
   try {
     const { id } = request.params;
@@ -54,7 +53,9 @@ const updateLibrarian = async (request, response) => {
       .status(201)
       .json({ "Bibliotecario actualizado con éxito": rows.affectedRows });
   } catch (error) {
-    response.status(500).json({ error: "Error al actualizar el bibliotecario" });
+    response
+      .status(500)
+      .json({ error: "Error al actualizar el bibliotecario" });
   }
 };
 
@@ -68,10 +69,10 @@ const deleteLibrarian = async (request, response) => {
   }
 };
 
-export { 
-  getLibrarians, 
+export {
+  getLibrarians,
   getLibrarianById,
   createLibrarian,
   updateLibrarian,
-  deleteLibrarian
+  deleteLibrarian,
 };

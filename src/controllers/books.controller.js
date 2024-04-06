@@ -10,7 +10,6 @@ const getBooks = async (request, response) => {
   }
 };
 
-
 const getBookById = async (request, response) => {
   try {
     const { id } = request.params;
@@ -24,14 +23,15 @@ const getBookById = async (request, response) => {
 
 const createBook = async (request, response) => {
   try {
-    const { title, author, isbn, units, image_name, editorial_id } = request.body;
+    const { title, author, isbn, units, image_name, editorial_id } =
+      request.body;
     const [rows] = await connection.query("CALL spCreateBook(?,?,?,?,?,?)", [
       title,
       author,
       isbn,
       units,
       image_name,
-      editorial_id
+      editorial_id,
     ]);
     response.status(201).json({
       "Libro creado con éxito": rows.affectedRows,
@@ -44,7 +44,8 @@ const createBook = async (request, response) => {
 const updateBook = async (request, response) => {
   try {
     const { id } = request.params;
-    const { title, author, isbn, units, image_name, editorial_id } = request.body;
+    const { title, author, isbn, units, image_name, editorial_id } =
+      request.body;
     const [rows] = await connection.query("CALL spUpdateBook(?,?,?,?,?,?,?)", [
       id,
       title,
@@ -52,7 +53,7 @@ const updateBook = async (request, response) => {
       isbn,
       units,
       image_name,
-      editorial_id
+      editorial_id,
     ]);
     response
       .status(201)
@@ -72,10 +73,4 @@ const deleteBook = async (request, response) => {
   }
 };
 
-export { 
-  getBooks, 
-  getBookById,
-  createBook,
-  updateBook,
-  deleteBook
-};
+export { getBooks, getBookById, createBook, updateBook, deleteBook };

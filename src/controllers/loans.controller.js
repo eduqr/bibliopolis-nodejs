@@ -10,7 +10,6 @@ const getLoans = async (request, response) => {
   }
 };
 
-
 const getLoanById = async (request, response) => {
   try {
     const { id } = request.params;
@@ -70,10 +69,4 @@ const deleteLoan = async (request, response) => {
   }
 };
 
-export { 
-  getLoans, 
-  getLoanById,
-  createLoan,
-  updateLoan,
-  deleteLoan
-};
+export { getLoans, getLoanById, createLoan, updateLoan, deleteLoan };

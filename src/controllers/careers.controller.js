@@ -10,7 +10,6 @@ const getCareers = async (request, response) => {
   }
 };
 
-
 const getCareerById = async (request, response) => {
   try {
     const { id } = request.params;
@@ -25,9 +24,7 @@ const getCareerById = async (request, response) => {
 const createCareer = async (request, response) => {
   try {
     const { name } = request.body;
-    const [rows] = await connection.query("CALL spCreateCareer(?)", [
-      name,
-    ]);
+    const [rows] = await connection.query("CALL spCreateCareer(?)", [name]);
     response.status(201).json({
       "Carrera creada con éxito": rows.affectedRows,
     });
@@ -62,10 +59,4 @@ const deleteCareer = async (request, response) => {
   }
 };
 
-export { 
-  getCareers, 
-  getCareerById,
-  createCareer,
-  updateCareer,
-  deleteCareer
-};
+export { getCareers, getCareerById, createCareer, updateCareer, deleteCareer };
