@@ -10,6 +10,7 @@ const getRoles = async (request, response) => {
   }
 };
 
+
 const getRolesById = async (request, response) => {
   try {
     const { id } = request.params;

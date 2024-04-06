@@ -10,6 +10,7 @@ const getLibrarians = async (request, response) => {
   }
 };
 
+
 const getLibrarianById = async (request, response) => {
   try {
     const { id } = request.params;

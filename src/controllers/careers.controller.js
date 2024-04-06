@@ -10,6 +10,7 @@ const getCareers = async (request, response) => {
   }
 };
 
+
 const getCareerById = async (request, response) => {
   try {
     const { id } = request.params;

@@ -10,6 +10,7 @@ const getLoans = async (request, response) => {
   }
 };
 
+
 const getLoanById = async (request, response) => {
   try {
     const { id } = request.params;
