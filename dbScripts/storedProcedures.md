@@ -64,3 +64,64 @@ BEGIN
 END$$
 DELIMITER ;
 ```
+
+
+
+```sql
+-- roles
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetRoles()
+BEGIN
+  SELECT *
+  FROM roles;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetRoleById(
+  IN roleId INT
+)
+BEGIN
+  SELECT *
+  FROM roles
+  WHERE id = roleId;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spCreateRole(
+  IN roleName VARCHAR(40)
+)
+BEGIN
+  INSERT INTO
+  roles (name)
+  VALUES (roleName);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spUpdateRole(
+  IN roleId INT,
+  IN roleName VARCHAR(40)
+)
+BEGIN
+  UPDATE roles
+  SET
+  name = roleName
+  WHERE id = roleId;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spDeleteRole(
+  IN roleId INT
+)
+BEGIN
+  DELETE
+  FROM roles
+  WHERE id = roleId;
+END$$
+DELIMITER ;
+
+
+```
