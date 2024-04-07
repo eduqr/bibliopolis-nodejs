@@ -1,77 +1,70 @@
 import { connection } from "../config/config.js";
 
-const getLibrarians = async (request, response) => {
+const getEditorials = async (request, response) => {
   try {
-    const [rows] = await connection.query("CALL spGetLibrarians");
+    const [rows] = await connection.query("CALL spGetEditorials");
     const data = rows[0];
     response.status(200).json(data);
   } catch (error) {
-    response.status(500).json({ error: "Error al obtener los bibliotecarios" });
+    response.status(500).json({ error: "Error al obtener las editoriales" });
   }
 };
 
-
-const getLibrarianById = async (request, response) => {
+const getEditorialById = async (request, response) => {
   try {
     const { id } = request.params;
-    const [rows] = await connection.query("CALL spGetLibrarianById(?)", [id]);
+    const [rows] = await connection.query("CALL spGetEditorialById(?)", [id]);
     const data = rows[0][0];
     response.status(200).json(data);
   } catch (error) {
-    response.status(500).json({ error: "Error al obtener el bibliotecario" });
+    response.status(500).json({ error: "Error al obtener la editorial" });
   }
 };
 
-const createLibrarian = async (request, response) => {
+const createEditorial = async (request, response) => {
   try {
-    const { name, lastname, email, rol_id } = request.body;
-    const [rows] = await connection.query("CALL spCreateLibrarian(?,?,?,?)", [
+    const { name } = request.body;
+    const [rows] = await connection.query("CALL spCreateEditorial(?)", [
       name,
-      lastname,
-      email,
-      rol_id,
     ]);
     response.status(201).json({
-      "Bibliotecario creado con éxito": rows.affectedRows,
+      "Editorial creada con éxito": rows.affectedRows,
     });
   } catch (error) {
-    response.status(500).json({ error: "Error al crear el bibliotecario" });
+    response.status(500).json({ error: "Error al crear la editorial" });
   }
 };
 
-const updateLibrarian = async (request, response) => {
+const updateEditorial = async (request, response) => {
   try {
     const { id } = request.params;
-    const { name, lastname, email, rol_id } = request.body;
-    const [rows] = await connection.query("CALL spUpdateLibrarian(?,?,?,?,?)", [
+    const { name } = request.body;
+    const [rows] = await connection.query("CALL spUpdateEditorial(?,?)", [
       id,
       name,
-      lastname,
-      email,
-      rol_id,
     ]);
     response
       .status(201)
-      .json({ "Bibliotecario actualizado con éxito": rows.affectedRows });
+      .json({ "Editorial actualizada con éxito": rows.affectedRows });
   } catch (error) {
-    response.status(500).json({ error: "Error al actualizar el bibliotecario" });
+    response.status(500).json({ error: "Error al actualizar la editorial" });
   }
 };
 
-const deleteLibrarian = async (request, response) => {
+const deleteEditorial = async (request, response) => {
   try {
     const { id } = request.params;
-    const [rows] = await connection.query("CALL spDeleteLibrarian(?)", [id]);
+    const [rows] = await connection.query("CALL spDeleteEditorial(?)", [id]);
     response.sendStatus(204);
   } catch (error) {
-    response.status(500).json({ error: "Error al eliminar el bibliotecario" });
+    response.status(500).json({ error: "Error al eliminar la editorial" });
   }
 };
 
 export { 
-  getLibrarians, 
-  getLibrarianById,
-  createLibrarian,
-  updateLibrarian,
-  deleteLibrarian
+  getEditorials, 
+  getEditorialById,
+  createEditorial,
+  updateEditorial,
+  deleteEditorial
 };

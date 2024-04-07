@@ -56,7 +56,7 @@ const updateRole = async (request, response) => {
 const deleteRole = async (request, response) => {
   try {
     const { id } = request.params;
-    const [rows] = await connection.query("CALL spDeletRole(?)", [id]);
+    const [rows] = await connection.query("CALL spDeleteRole(?)", [id]);
     response.sendStatus(204);
   } catch (error) {
     response.status(500).json({ error: "Error al eliminar el Rol" });
