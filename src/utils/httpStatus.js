@@ -1,0 +1,18 @@
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+export const StatusCode = {
+  OK: 200,
+  CREATED: 201,
+  NO_CONTENT: 204,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  METHOD_NOT_ALLOWED: 405,
+  REQUEST_TIMEOUT: 408,
+  CONFLICT: 409,
+  IM_A_TEAPOT: 418,
+  TOO_MANY_REQUESTS: 429,
+  INTERNAL_SERVER: 500,
+  SERVER_UNAVAILABLE: 503,
+};
