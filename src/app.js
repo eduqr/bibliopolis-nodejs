@@ -21,5 +21,8 @@ app.use(studentsRouter);
 app.use(librariansRouter);
 app.use(BooksRouter);
 app.use(editorialRouter);
+app.use('/uploads', express.static('uploads'));
+
+
 
 export default app;

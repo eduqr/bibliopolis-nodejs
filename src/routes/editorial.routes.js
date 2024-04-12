@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getEditorials } from "../controllers/editorial.controller.js";
+import { getEditorials, getEditorialById } from "../controllers/editorial.controller.js";
 
 const router = Router();
 
 router.get("/editorial", getEditorials);
+router.get("/editorial/:id", getEditorialById);
 
 export default router;
