@@ -5,13 +5,14 @@ class ConnectionError extends Error {
     super(message);
     this.name = this.constructor.name;
     this.httpCode = StatusCode.SERVER_UNAVAILABLE;
-    this.description = "No se pudo establecer una conexión con el servidor";
+    this.description = "Conexión con el servidor interrumpida";
   }
 }
 
 class ValidationError extends Error {
-  constructor(message, field) {
+  constructor(data, message, field) {
     super(message);
+    this.data = data;
     this.name = this.constructor.name;
     this.httpCode = StatusCode.BAD_REQUEST;
     this.field = field;
@@ -51,11 +52,11 @@ class AuthorizationError extends Error {
     super(message);
     this.name = this.constructor.name;
     this.httpCode = StatusCode.FORBIDDEN;
-    this.description = "No autorizado para acceder a este recurso";
+    this.description = "No autorizado para acceder al recurso";
   }
 }
 
-export {
+const errors = {
   ConnectionError,
   ValidationError,
   InternalServerError,
@@ -63,3 +64,5 @@ export {
   NotFoundError,
   AuthorizationError,
 };
+
+export { errors };

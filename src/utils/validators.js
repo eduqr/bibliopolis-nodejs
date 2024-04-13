@@ -1,19 +1,48 @@
 import { connection } from "../config/config.js";
-import {
-  ConnectionError,
-  ValidationError,
-  InternalServerError,
-  AuthenticationError,
-  NotFoundError,
-  AuthorizationError,
-} from "./errorHandler.js";
+import { errors } from "./errorHandler.js";
 
-async function validateConnection() {
+async function DBConnection() {
   try {
-    const [rows] = await connection.query("SELECT 1");
+    await connection.query("SELECT 1");
   } catch (error) {
-    throw new ConnectionError();
+    throw new errors.ConnectionError();
   }
 }
 
-export { validateConnection };
+async function dataExists(result) {
+  if (!result) {
+    throw new errors.NotFoundError();
+  }
+}
+
+async function studentId(id) {
+  if (typeof id !== "string" || !/^\d+$/.test(id)) {
+    throw new errors.ValidationError(
+      id,
+      "La matrícula está conformada con solo números",
+      "id"
+    );
+  }
+
+  // pasar bien los datos en el throw del error
+  if (id.length < 9 || id.length > 10) {
+    throw new errors.ValidationError(
+      id,
+      "La matrícula debe tener entre 9 y 10 números",
+      "matricula"
+    );
+  }
+}
+
+async function number(num) {
+  if (!isNaN(num)) {
+    throw new errors.ValidationError();
+  }
+}
+const validate = {
+  DBConnection,
+  dataExists,
+  number,
+  studentId,
+};
+export { validate };

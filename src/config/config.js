@@ -11,15 +11,9 @@ try {
     password: process.env.DBPASS,
     database: process.env.DBNAME,
   });
-
   console.log("Conexión exitosa a la base de datos");
 } catch (error) {
-  console.error(
-    "Error al conectar con la base de datos:",
-    process.env.DBNAME,
-    "Error:",
-    error.message
-  );
+  console.error("Error al conectar con la base de datos:", process.env.DBNAME);
 }
 
 export { connection };
