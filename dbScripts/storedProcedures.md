@@ -144,6 +144,17 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetLoanActive(
+  IN studentId VARCHAR(10)
+)
+BEGIN
+  SELECT COUNT(*) AS prestamos_activos
+  FROM loans
+  WHERE studentId = student_id AND status = 'active';
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spCreateLoan(
   IN startDate DATE,
   IN endDate DATE,
