@@ -69,4 +69,5 @@ const deleteLoan = async (request, response) => {
   }
 };
 
+
 export { getLoans, getLoanById, createLoan, updateLoan, deleteLoan };
