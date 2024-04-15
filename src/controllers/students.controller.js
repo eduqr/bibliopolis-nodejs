@@ -1,5 +1,4 @@
-import { connection } from "../config/config.js";
-import { errors, sendError } from "../utils/errorHandler.js";
+import { sendError } from "../utils/errorHandler.js";
 import { StatusCode } from "../utils/httpStatus.js";
 import { operations } from "../dbOperations/students.operations.js";
 

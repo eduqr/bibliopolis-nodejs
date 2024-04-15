@@ -1,15 +1,15 @@
 import { errors } from "../errorHandler.js";
 import { validate } from "./globalValidators.js";
 
-async function queryResultGetRoles(data) {
+async function queryResultGetCareers(data) {
   if (!(await validate.dataExists(data))) {
-    errorMessage = "No existen roles registrados";
+    errorMessage = "No existen carreras registradas";
     throw new errors.NotFoundError(errorMessage);
   }
 }
 
-const validateRoles = {
-  queryResultGetRoles,
+const validateCareers = {
+  queryResultGetCareers,
 };
 
-export { validateRoles };
+export { validateCareers };
