@@ -20,6 +20,7 @@ async function isNumber(number) {
   if (isNaN(number) || number === "") {
     return false;
   }
+  return true;
 }
 
 async function checkLength(data, minLength, maxLength) {
