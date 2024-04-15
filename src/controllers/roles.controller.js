@@ -1,12 +1,14 @@
 import { connection } from "../config/config.js";
+import { sendError } from "../utils/errorHandler.js";
+import { StatusCode } from "../utils/httpStatus.js";
+import { operations } from "../dbOperations/roles.operations.js";
 
 const getRoles = async (request, response) => {
   try {
-    const [rows] = await connection.query("CALL spGetRoles");
-    const data = rows[0];
-    response.status(200).json(data);
+    const data = await operations.getRoles();
+    response.status(StatusCode.OK).json(data);
   } catch (error) {
-    response.status(500).json({ error: "Error al obtener Roles" });
+    await sendError(error, response);
   }
 };
 
