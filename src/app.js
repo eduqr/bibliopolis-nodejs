@@ -24,7 +24,7 @@ app.use(editorialRouter);
 app.use("/uploads", express.static("uploads"));
 
 app.use((request, response, next) => {
-  response.status(204).json({
+  response.status(404).json({
     message: "Intenta con alguna de estas rutas:",
     availableRoutes: [
       {
