@@ -24,7 +24,7 @@ app.use(editorialRouter);
 app.use("/uploads", express.static("uploads"));
 
 app.use((request, response, next) => {
-  response.status(404).json({
+  response.status(204).json({
     message: "Intenta con alguna de estas rutas:",
     availableRoutes: [
       {
@@ -37,7 +37,7 @@ app.use((request, response, next) => {
         books: "/libros"
       },
       {
-        editorials: "/editoriales"
+        editorials: "/editorial"
       },
       {
         librarians: "/bibliotecarios"
@@ -46,6 +46,8 @@ app.use((request, response, next) => {
         roles: "/roles"
       }
     ],
+    reminder: "Puedes usar Postman o algún programa similar para agregar elementos",
+    disclaimer: "Todos los datos son ficticios y se utilizan únicamente con fines demostrativos"
   });
 });
 
