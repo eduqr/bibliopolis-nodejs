@@ -10,6 +10,8 @@ try {
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: process.env.DBNAME,
+    port: process.env.PORT,
+    multipleStatements: true,
   });
   console.log("Conexión exitosa a la base de datos");
 } catch (error) {
