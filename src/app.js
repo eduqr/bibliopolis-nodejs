@@ -25,7 +25,27 @@ app.use("/uploads", express.static("uploads"));
 
 app.use((request, response, next) => {
   response.status(404).json({
-    message: "Ruta no encontrada",
+    message: "Intenta con alguna de estas rutas:",
+    availableRoutes: [
+      {
+        students: "/estudiantes"
+      },
+      {
+        careers: "/carreras"
+      },
+      {
+        books: "/libros"
+      },
+      {
+        editorials: "/editoriales"
+      },
+      {
+        librarians: "/bibliotecarios"
+      },
+      {
+        roles: "/roles"
+      }
+    ],
   });
 });
 
