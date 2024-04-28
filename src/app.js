@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request, response } from "express";
 import cors from "cors";
 import loansRouter from "./routes/loans.routes.js";
 import careersRouter from "./routes/careers.routes.js";
@@ -21,8 +21,12 @@ app.use(studentsRouter);
 app.use(librariansRouter);
 app.use(BooksRouter);
 app.use(editorialRouter);
-app.use('/uploads', express.static('uploads'));
+app.use("/uploads", express.static("uploads"));
 
-
+app.use((request, response, next) => {
+  response.status(404).json({
+    message: "Ruta no encontrada",
+  });
+});
 
 export default app;
