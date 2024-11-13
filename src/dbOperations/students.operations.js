@@ -22,6 +22,18 @@ const getStudentById = async (request) => {
   return data;
 };
 
+const getStudentByEmail = async (request) => {
+  const { email } = request.params;
+
+  await validateStudent.studentEmail(email);
+  await validate.DBConnection();
+
+  const [rows] = await connection.query("CALL spGetStudentByEmail(?)", [email]);
+  const data = rows[0][0];
+  await validateStudent.queryResultGetStudentByEmail(data, email);
+  return data;
+};
+
 const createStudent = async (request) => {
   const { id, name, lastname, email, career_id } = request.body;
 
@@ -113,6 +125,7 @@ const operations = {
   createStudent,
   updateStudent,
   deleteStudent,
+  getStudentByEmail,
 };
 
 export { operations };

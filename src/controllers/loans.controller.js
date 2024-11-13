@@ -21,6 +21,20 @@ const getLoanById = async (request, response) => {
   }
 };
 
+const getStudentsLoanById = async (request, response) => {
+  try {
+    const { id } = request.params;
+    console.log("Student ID received:", id); // Verificar qué ID se recibe
+    const [rows] = await connection.query("CALL spGetStudentsLoanById(?)", [
+      id,
+    ]);
+    const data = rows[0];
+    response.status(200).json(data);
+  } catch (error) {
+    response.status(500).json({ error: "Error al obtener los préstamos" });
+  }
+};
+
 const getLoanActive = async (request, response) => {
   try {
     const { id } = request.params;
@@ -80,5 +94,12 @@ const deleteLoan = async (request, response) => {
   }
 };
 
-
-export { getLoans, getLoanById, createLoan, updateLoan, deleteLoan, getLoanActive };
+export {
+  getLoans,
+  getLoanById,
+  createLoan,
+  updateLoan,
+  deleteLoan,
+  getLoanActive,
+  getStudentsLoanById,
+};

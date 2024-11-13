@@ -7,6 +7,7 @@ import studentsRouter from "./routes/students.routes.js";
 import librariansRouter from "./routes/librarians.routes.js";
 import BooksRouter from "./routes/books.routes.js";
 import editorialRouter from "./routes/editorial.routes.js";
+import emailRouter from "./routes/email.routes.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(studentsRouter);
 app.use(librariansRouter);
 app.use(BooksRouter);
 app.use(editorialRouter);
+app.use(emailRouter);
 app.use("/uploads", express.static("uploads"));
 
 app.use((request, response, next) => {
@@ -28,26 +30,28 @@ app.use((request, response, next) => {
     message: "Intenta con alguna de estas rutas:",
     availableRoutes: [
       {
-        students: "/estudiantes"
+        students: "/estudiantes",
       },
       {
-        careers: "/carreras"
+        careers: "/carreras",
       },
       {
-        books: "/libros"
+        books: "/libros",
       },
       {
-        editorials: "/editorial"
+        editorials: "/editorial",
       },
       {
-        librarians: "/bibliotecarios"
+        librarians: "/bibliotecarios",
       },
       {
-        roles: "/roles"
-      }
+        roles: "/roles",
+      },
     ],
-    reminder: "Puedes usar Postman o algún programa similar para agregar elementos",
-    disclaimer: "Todos los datos son ficticios y se utilizan únicamente con fines demostrativos"
+    reminder:
+      "Puedes usar Postman o algún programa similar para agregar elementos",
+    disclaimer:
+      "Todos los datos son ficticios y se utilizan únicamente con fines demostrativos",
   });
 });
 

@@ -21,6 +21,19 @@ const getLibrarianById = async (request, response) => {
   }
 };
 
+const getLibrariansByEmail = async (request, response) => {
+  try {
+    const { email } = request.body;
+    const [rows] = await connection.query("CALL spGetLibrariansByEmail(?)", [
+      email,
+    ]);
+    const data = rows[0][0];
+    response.status(200).json(data);
+  } catch (error) {
+    response.status(500).json({ error: "Error al obtener el bibliotecario" });
+  }
+};
+
 const createLibrarian = async (request, response) => {
   try {
     const { name, lastname, email, rol_id } = request.body;
@@ -72,6 +85,7 @@ const deleteLibrarian = async (request, response) => {
 export {
   getLibrarians,
   getLibrarianById,
+  getLibrariansByEmail,
   createLibrarian,
   updateLibrarian,
   deleteLibrarian,

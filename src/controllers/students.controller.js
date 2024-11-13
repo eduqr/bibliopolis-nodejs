@@ -20,6 +20,15 @@ const getStudentById = async (request, response) => {
   }
 };
 
+const getStudentByEmail = async (request, response) => {
+  try {
+    const data = await operations.getStudentByEmail(request);
+    response.status(StatusCode.OK).json(data);
+  } catch (error) {
+    await sendError(error, response);
+  }
+};
+
 const createStudent = async (request, response) => {
   try {
     const data = await operations.createStudent(request);
@@ -53,4 +62,5 @@ export {
   updateStudent,
   deleteStudent,
   getStudentById,
+  getStudentByEmail,
 };

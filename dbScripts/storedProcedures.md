@@ -20,6 +20,28 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetStudentByEmail(
+  IN StudentEmail VARCHAR(55)
+)
+BEGIN
+  SELECT *
+  FROM students
+  WHERE email = StudentEmail;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetStudentsLoanById(
+  IN studentId VARCHAR(10)
+)
+BEGIN
+  SELECT *
+  FROM loans
+  WHERE student_id = studentId;
+END
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spCreateStudent(
 	IN studentId VARCHAR(10),
   IN studentName VARCHAR(40),
@@ -223,6 +245,17 @@ BEGIN
   SELECT *
   FROM librarians
   WHERE id = librarianId;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS spGetLibrarianByEmail(
+  IN LibrarianEmail VARCHAR(55)
+)
+BEGIN
+  SELECT *
+  FROM librarians
+  WHERE email = LibrarianEmail;
 END$$
 DELIMITER ;
 
