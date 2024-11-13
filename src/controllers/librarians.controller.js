@@ -21,10 +21,10 @@ const getLibrarianById = async (request, response) => {
   }
 };
 
-const getLibrariansByEmail = async (request, response) => {
+const getLibrarianByEmail = async (request, response) => {
   try {
     const { email } = request.body;
-    const [rows] = await connection.query("CALL spGetLibrariansByEmail(?)", [
+    const [rows] = await connection.query("CALL spGetLibrarianByEmail(?)", [
       email,
     ]);
     const data = rows[0][0];
@@ -85,7 +85,7 @@ const deleteLibrarian = async (request, response) => {
 export {
   getLibrarians,
   getLibrarianById,
-  getLibrariansByEmail,
+  getLibrarianByEmail,
   createLibrarian,
   updateLibrarian,
   deleteLibrarian,

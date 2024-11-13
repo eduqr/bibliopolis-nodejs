@@ -5,7 +5,7 @@ import {
   updateLibrarian,
   deleteLibrarian,
   getLibrarianById,
-  getLibrariansByEmail,
+  getLibrarianByEmail,
 } from "../controllers/librarians.controller.js";
 
 const router = Router();
@@ -13,7 +13,7 @@ const router = Router();
 router.get("/bibliotecarios", getLibrarians);
 router.get("/bibliotecarios/:id", getLibrarianById);
 router.post("/bibliotecarios", createLibrarian);
-router.post("/bibliotecarios-email", getLibrariansByEmail);
+router.post("/bibliotecarios-email", getLibrarianByEmail);
 router.patch("/bibliotecarios/:id", updateLibrarian);
 router.delete("/bibliotecarios/:id", deleteLibrarian);
 

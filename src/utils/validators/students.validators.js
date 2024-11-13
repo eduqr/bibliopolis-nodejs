@@ -108,6 +108,13 @@ async function queryResultGetStudentById(data, id) {
   }
 }
 
+async function queryResultGetStudentByEmail(data, email) {
+  if (!(await validate.dataExists(data))) {
+    errorMessage = "No se encontró el estudiante";
+    throw new errors.NotFoundError(errorMessage, email);
+  }
+}
+
 const validateStudent = {
   studentId,
   studentName,
@@ -116,6 +123,7 @@ const validateStudent = {
   studentCareer,
   queryResultGetStudents,
   queryResultGetStudentById,
+  queryResultGetStudentByEmail,
 };
 
 export { validateStudent };
