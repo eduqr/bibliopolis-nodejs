@@ -23,7 +23,7 @@ const getStudentById = async (request) => {
 };
 
 const getStudentByEmail = async (request) => {
-  const { email } = request.params;
+  const { email } = request.body;
 
   await validateStudent.studentEmail(email);
   await validate.DBConnection();

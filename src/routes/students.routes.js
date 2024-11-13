@@ -12,7 +12,7 @@ const router = Router();
 
 router.get("/estudiantes", getStudents);
 router.get("/estudiantes/:id", getStudentById);
-router.get("/estudiantes-email", getStudentByEmail);
+router.post("/estudiantes-email", getStudentByEmail);
 router.post("/estudiantes", createStudent);
 router.patch("/estudiantes/:id", updateStudent);
 router.delete("/estudiantes/:id", deleteStudent);
