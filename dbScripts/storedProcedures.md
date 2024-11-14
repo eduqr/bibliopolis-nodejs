@@ -85,9 +85,7 @@ BEGIN
 	WHERE id = studentId;
 END$$
 DELIMITER ;
-```
 
-```sql
 -- roles
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetRoles()
@@ -97,54 +95,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spGetRoleById(
-  IN roleId INT
-)
-BEGIN
-  SELECT *
-  FROM roles
-  WHERE id = roleId;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spCreateRole(
-  IN roleName VARCHAR(40)
-)
-BEGIN
-  INSERT INTO
-  roles (name)
-  VALUES (roleName);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spUpdateRole(
-  IN roleId INT,
-  IN roleName VARCHAR(40)
-)
-BEGIN
-  UPDATE roles
-  SET
-  name = roleName
-  WHERE id = roleId;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spDeleteRole(
-  IN roleId INT
-)
-BEGIN
-  DELETE
-  FROM roles
-  WHERE id = roleId;
-END$$
-DELIMITER ;
-```
-
-```sql
 -- loans
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetLoans()
@@ -189,7 +139,6 @@ BEGIN
   loans (start_date, end_date, status, student_id, book_id)
   VALUES (startDate, endDate, status, studentId, bookId);
 END$$
-
 DELIMITER ;
 
 DELIMITER $$
@@ -211,7 +160,6 @@ BEGIN
   book_id = bookId
   WHERE id = loanId;
 END$$
-
 DELIMITER ;
 
 DELIMITER $$
@@ -225,10 +173,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-```
-
-```sql
---librarians
+-- ibrarians
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetLibrarians()
 BEGIN
@@ -303,10 +248,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-```
-
-```sql
---editorial
+-- itorial
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetEditorials()
 BEGIN
@@ -314,7 +256,6 @@ BEGIN
   FROM editorials;
 END$$
 DELIMITER ;
-
 
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetEditorialById(
@@ -327,44 +268,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spCreateEditorial(
-  IN editorialName VARCHAR(100)
-)
-BEGIN
-  INSERT INTO
-  editorials (name)
-  VALUES (editorialName);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spUpdateEditorial(
-  IN editorialId INT,
-  IN editorialName VARCHAR(100)
-)
-BEGIN
-  UPDATE editorials
-  SET
-  name = editorialName
-  WHERE id = editorialId;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spDeleteEditorial(
-  IN editorialId INT
-)
-BEGIN
-  DELETE
-  FROM editorials
-  WHERE id = editorialId;
-END$$
-DELIMITER ;
-```
-
-```sql
---careers
+-- eers
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetCareers()
 BEGIN
@@ -373,56 +277,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spGetCareerById(
-  IN careerId INT
-)
-BEGIN
-  SELECT *
-  FROM careers
-  WHERE id = careerId;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spCreateCareer(
-  IN careerName VARCHAR(100)
-)
-BEGIN
-  INSERT INTO
-  careers (name)
-  VALUES (careerName);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spUpdateCareer(
-  IN careerId INT,
-  IN careerName VARCHAR(100)
-)
-BEGIN
-  UPDATE careers
-  SET
-  name = careerName
-  WHERE id = careerId;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS spDeleteCareer(
-  IN careerId INT
-)
-BEGIN
-  DELETE
-  FROM careers
-  WHERE id = careerId;
-END$$
-DELIMITER ;
-
-```
-
-```sql
---books
+-- s
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetBooks()
 BEGIN
