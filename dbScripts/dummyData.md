@@ -61,7 +61,7 @@ INSERT INTO tags (name) VALUES
 ('Misterio');
 
 INSERT INTO books (title, author, isbn, units, image_name, editorial_id) VALUES
-('Cien años de soledad', 'Gabriel García Márquez', '9788483104616', 10, 'cien_anos_soledad.jpg', 1),
+('Cien años de soledad', 'Gabriel García Márquez', '9788483104616', 10, 'cien_anos_soledad.webp', 1),
 ('El Señor de los Anillos: La Comunidad del Anillo', 'J.R.R. Tolkien', '9788447213039', 15, 'comunidad_anillo.jpg', 3),
 ('Los siete hábitos de la gente altamente efectiva', 'Stephen Covey', '9788429160368', 9, 'siete_habitos.jpg', 10),
 ('Pequeño cerdo capitalista', 'Sofia Macías', '9788408089232', 8, 'pequeno_cerdo.jpg', 10),
@@ -69,7 +69,7 @@ INSERT INTO books (title, author, isbn, units, image_name, editorial_id) VALUES
 ('1984', 'George Orwell', '9788499890944', 12, '1984.jpg', 5),
 ('Orgullo y prejuicio', 'Jane Austen', '9788497940936', 10, 'orgullo_prejuicio.jpg', 2),
 ('Harry Potter y la piedra filosofal', 'J.K. Rowling', '9788478884451', 20, 'harry_potter_piedra_filosofal.jpg', 4),
-('El Principito', 'Antoine de Saint-Exupéry', '9788424914987', 18, 'principito.jpg', 7),
+('El Principito', 'Antoine de Saint-Exupéry', '9788424914987', 18, 'principito.jpeg', 7),
 ('El nombre del viento', 'Patrick Rothfuss', '9788401352836', 14, 'nombre_viento.jpg', 8),
 ('El Alquimista', 'Paulo Coelho', '9780062511409', 13, 'el_alquimista.jpg', 10),
 ('Las aventuras de Sherlock Holmes', 'Arthur Conan Doyle', '9788497940875', 16, 'sherlock_holmes.jpg', 2),
