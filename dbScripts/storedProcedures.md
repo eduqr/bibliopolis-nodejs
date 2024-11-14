@@ -173,7 +173,7 @@ BEGIN
 END$$
 DELIMITER ;
 
--- ibrarians
+-- librarians
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetLibrarians()
 BEGIN
@@ -248,7 +248,7 @@ BEGIN
 END$$
 DELIMITER ;
 
--- itorial
+-- editorials
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetEditorials()
 BEGIN
@@ -268,7 +268,7 @@ BEGIN
 END$$
 DELIMITER ;
 
--- eers
+-- careers
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetCareers()
 BEGIN
@@ -277,7 +277,7 @@ BEGIN
 END$$
 DELIMITER ;
 
--- s
+-- books
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS spGetBooks()
 BEGIN
