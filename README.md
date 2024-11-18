@@ -52,3 +52,6 @@ DBNAME=bibliopolisdb
 npm run server
 ```
 Ahora cada vez que abras el proyecto solo necesitas ejecutar el comando anterior :pray:
+
+## :question: Soporte
+Si tienes problemas o preguntas, por favor abre un issue en el repositorio.
