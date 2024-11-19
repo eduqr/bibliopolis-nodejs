@@ -38,7 +38,7 @@ BEGIN
   SELECT *
   FROM loans
   WHERE student_id = studentId;
-END
+END$$
 DELIMITER ;
 
 DELIMITER $$
